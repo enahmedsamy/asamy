@@ -16,7 +16,7 @@ body {
   justify-content: center;
   align-items: center; /* Center the page container */
   min-height: 100vh;
-  padding: 0px;
+  padding: 0;
   overflow-y: auto;
 }
 
@@ -33,17 +33,66 @@ body {
   flex-direction: column;
 }
 
-/* Fade-in initial state */
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
+}
+.bounce {
+  animation: bounce 1s ease;
+}
+
+/* Hand Emoji Wave Animation */
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); }
+  40% { transform: rotate(14deg); }
+  50% { transform: rotate(-4deg); }
+  60% { transform: rotate(10deg); }
+  70% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+.hand {
+  display: inline-block;
+  transform-origin: bottom center;
+  animation: wave 2s ease-in-out infinite;
+}
+
+/* Typewriter effect styling for h2 */
+.typewriter {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  min-height: 2.5rem; /* Reserve space for text */
+}
+
+/* Fade-in for elements */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll Reveal (for footer if needed) */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Main Content Container */
 .container {
-/*   align-self: flex-start; /* Keep content left-aligned */
-  max-width:900px;
+  max-width: 900px;
   width: 100%;
   text-align: left;
   padding: 20px;
@@ -76,12 +125,6 @@ h1 {
   margin-bottom: 10px;
 }
 
-h2 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
 /* Who Am I Section */
 .who-am-i {
   font-size: 1.2rem;
@@ -93,21 +136,26 @@ h2 {
   padding: 10px;
 }
 
-/* Section Titles for Description Sections */
+/* Section Titles (clickable) */
 .section-title {
   font-size: 1.5rem;
   font-weight: 600;
   margin-top: 20px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
-/* Description Paragraphs */
-.description {
+/* Description Box (initially hidden) */
+.description-box {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
   font-size: 1.2rem;
   font-weight: 300;
   line-height: 1.8;
   max-width: 870px;
-  margin-bottom: 10px;
+  display: none;
 }
 
 /* Footer */
@@ -120,7 +168,6 @@ h2 {
   padding-top: 10px;
   margin-top: auto;
   padding-bottom: 10px;
-
 }
 
 .social-links {
@@ -163,15 +210,12 @@ h2 {
     text-align: left;
     padding-bottom: 50px;
   }
-
   .container {
-    padding: 10px; /* half of desktop padding (20px → 10px) */
+    padding: 10px; /* half of desktop padding */
   }
-
   h1 {
     font-size: 3rem;
   }
-
   /* Profile Image - Zoom with Face Alignment */
   .profile-container {
     width: 200px;
@@ -181,7 +225,6 @@ h2 {
     position: relative;
     margin-bottom: 30px;
   }
-
   .profile-img {
     width: 100%;
     height: 100%;
@@ -189,14 +232,12 @@ h2 {
     object-position: center;
     transition: transform 0.3s ease-in-out;
   }
-
   .profile-img:hover {
-    transform: scale(2) translateY(13%); /* 2x zoom and moves up */
+    transform: scale(2) translateY(13%);
   }
-
   .social-links {
     justify-content: center;
-    padding: 5px 0; /* half of desktop padding (10px → 5px) */
+    padding: 5px 0; /* half of desktop padding */
   }
 }
 
