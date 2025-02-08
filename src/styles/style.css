@@ -23,7 +23,7 @@ body {
 /* Page Container */
 .page-container {
   background-color: #ffffff;
-  border-radius: 50px;
+  border-radius: 45px;
   padding: 5px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Very light shadow */
   width: 100%;
@@ -43,7 +43,7 @@ body {
 /* Main Content Container */
 .container {
 /*   align-self: flex-start; /* Keep content left-aligned */
- */  max-width: 900px;
+  max-width:900px;
   width: 100%;
   text-align: left;
   padding: 20px;
