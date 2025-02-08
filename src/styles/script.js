@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Typewriter effect for the h2 element
+    // Typewriter effect for h2 element
     const typewriterElement = document.querySelector('.typewriter');
     const text = typewriterElement.getAttribute('data-text');
     let index = 0;
@@ -7,13 +7,13 @@ document.addEventListener("DOMContentLoaded", function () {
       if (index < text.length) {
         typewriterElement.textContent += text.charAt(index);
         index++;
-        setTimeout(typeWriter, 50); // Adjust typing speed as needed
+        setTimeout(typeWriter, 100);
       }
     }
     typewriterElement.textContent = "";
     typeWriter();
   
-    // Intersection Observer for scroll reveal (if needed for footer etc.)
+    // Intersection Observer for scroll reveal (e.g., footer)
     const scrollElements = document.querySelectorAll('.scroll-reveal');
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     scrollElements.forEach(el => observer.observe(el));
   
     // Typewriter effect for description boxes on click
-    function typeWriterEffect(element, text, speed = 20) {
+    function typeWriterEffect(element, text, speed = 50) {
       let i = 0;
       element.textContent = "";
       function type() {
@@ -39,22 +39,57 @@ document.addEventListener("DOMContentLoaded", function () {
       type();
     }
   
-    // Add click event listener to each section title
+    // Section title click events (toggle active state and reveal description)
     const sectionTitles = document.querySelectorAll('.section-title');
     sectionTitles.forEach(title => {
       title.addEventListener('click', function() {
-        // Get the next sibling element which should be the description-box
+        // Remove active class from all section titles
+        sectionTitles.forEach(t => t.classList.remove('active'));
+        // Add active class to clicked title
+        this.classList.add('active');
+        
         const descriptionBox = this.nextElementSibling;
         if (descriptionBox && descriptionBox.classList.contains('description-box')) {
           // If already displayed, do nothing
           if (descriptionBox.style.display === "block") return;
-          // Reveal the box
+          // Hide any other open description boxes
+          document.querySelectorAll('.description-box').forEach(box => {
+            if (box !== descriptionBox) {
+              box.style.display = "none";
+            }
+          });
+          // Reveal the box and run typewriter effect
           descriptionBox.style.display = "block";
-          // Get the text stored in data-text
           const descText = descriptionBox.getAttribute('data-text');
-          // Run the typewriter effect on the description box
-          typeWriterEffect(descriptionBox, descText, 5);
+          typeWriterEffect(descriptionBox, descText, 1);
         }
       });
+    });
+  
+    // Automatically open the first section ("Career Journey") after 1 second
+    setTimeout(() => {
+      if (sectionTitles.length > 0) {
+        sectionTitles[0].classList.add('bounce');
+        sectionTitles[0].click();
+        setTimeout(() => {
+          sectionTitles[0].classList.remove('bounce');
+        }, 500);
+      }
+    }, 1000);
+  
+    // Dark mode toggle event
+    const modeSwitch = document.getElementById('mode-switch');
+    modeSwitch.addEventListener('change', function() {
+      if (this.checked) {
+        document.body.classList.add('dark-mode');
+        document.querySelector('.page-container').classList.add('dark-mode');
+        document.querySelector('.toggle-icon').innerHTML = '<i class="fas fa-moon"></i>';
+        document.querySelector('.toggle-text').textContent = 'Dark';
+      } else {
+        document.body.classList.remove('dark-mode');
+        document.querySelector('.page-container').classList.remove('dark-mode');
+        document.querySelector('.toggle-icon').innerHTML = '<i class="fas fa-sun"></i>';
+        document.querySelector('.toggle-text').textContent = 'Light';
+      }
     });
   });

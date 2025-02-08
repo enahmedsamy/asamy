@@ -7,12 +7,23 @@
   
   <!-- Import Inter font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="src/styles/style.css">
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
   <div class="page-container">
     <div class="container">
+      <!-- Dark/Light Mode Toggle -->
+      <div class="mode-toggle">
+        <input type="checkbox" id="mode-switch">
+        <label for="mode-switch" class="toggle-label">
+          <span class="toggle-icon"><i class="fas fa-sun"></i></span>
+          <span class="toggle-text">Light</span>
+        </label>
+      </div>
+      
       <div class="profile-container bounce">
         <img src="src/Images/Personalphoto.jpeg" alt="Ahmed Samy" class="profile-img">
       </div>
@@ -38,28 +49,17 @@
     <!-- Footer Section -->
     <div class="footer scroll-reveal">
       <div class="social-links">
-        <a href="https://www.instagram.com/ahmed.sa.samy" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://x.com/ahmed_sa_samy" target="_blank">
-          <i class="fab fa-x-twitter"></i>
-        </a>
-        <a href="https://www.facebook.com/ahmed.sa.samy" target="_blank">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/ahmedssamy" target="_blank">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="mailto:a@asamy.net">
-          <i class="fas fa-envelope"></i>
-        </a>
+        <a href="https://www.instagram.com/ahmed.sa.samy" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/ahmed_sa_samy" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.facebook.com/ahmed.sa.samy" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/ahmedssamy" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:a@asamy.net"><i class="fas fa-envelope"></i></a>
       </div>
       <p class="copyrights">
         All rights reserved @asamy.net 2025
       </p>
     </div>
   </div>
-  <!-- Include script.js (ensure the path is correct) -->
   <script src="src/styles/script.js"></script>
 </body>
 </html>
