@@ -48,7 +48,6 @@ body.dark-mode {
 /* Container & Toggle */
 .container {
   position: relative;
-  /* max-width: 900px; */
   width: 100%;
   text-align: left;
   padding: 20px;
@@ -133,11 +132,11 @@ body.dark-mode {
   min-height: 2.5rem;
 }
 
-/* Fade-in & Scroll Reveal */
+/* Fade-in for typewriter element */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 2s ease-out, transform 2s ease-out;
 }
 .fade-in.visible {
   opacity: 1;
@@ -181,6 +180,18 @@ h1 {
   font-size: 4rem;
   font-weight: 800;
   margin-bottom: 10px;
+  margin-top: 10px;
+
+}
+
+h2 {
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+h3 {
+  padding-bottom: 10px;
+  padding-top: 20px;
 }
 
 /* Who Am I Section */
@@ -200,7 +211,7 @@ body.dark-mode .who-am-i {
   color: #e0e0e0;
 }
 
-/* Section Titles (clickable; active enlarges) */
+/* Section Titles */
 .section-title {
   font-size: 1.5rem;
   font-weight: 600;
@@ -213,18 +224,28 @@ body.dark-mode .who-am-i {
   font-size: 1.8rem;
 }
 
-/* Description Box (initially hidden) */
+/* Description Box (open by default, will fade in) */
 .description-box {
   background-color: #f9f9f9;
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px;
   margin-bottom: 10px;
   font-size: 1.2rem;
   font-weight: 300;
   line-height: 1.8;
-  max-width: 870px;
-  display: none;
+  /* max-width: 870px; */
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Fade-in effect for description boxes */
+.description-box.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 2s ease-out, transform 2s ease-out;
+}
+.description-box.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 body.dark-mode .description-box {
